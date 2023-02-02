@@ -1,0 +1,9 @@
+trimesh
+numpy
+scipy
+scikit-learn
+rtree
+pandas
+PIL
+tqdm
+pyyaml

@@ -1,0 +1,55 @@
+dataset:
+  # tooth dataset
+  raw:
+    sample_types:
+      CBCT: ['face1.obj', 'face2.obj', 'face3.obj', 'face4.obj']
+      IOS: ['face1.obj', 'face4.obj']
+    samples: [
+      'N1', 'N2', 'N3', 'N4', 'N5',
+      'N6', 'N7', 'N8', 'N9', 'N10',
+      'N11', 'N12', 'N13', 'N14', 'N15',
+      'N16', 'N17', 'N18', 'N19', 'N20'
+    ]
+    invalid_samples: ['N17', 'N19', 'N13', 'N7', 'N16']
+    remesh_suffix: '.remesh.obj'
+  
+  processed:
+    depth_csv: 'dataset/depth.csv'
+    edge_csv: 'dataset/edge.csv'
+    geometry_image: 'dataset/geoimg/'
+    gt: 'dataset/gt/'
+    features: 'dataset/features/'
+
+ML:
+  # only for machine learning
+  test_ratio: 0.2
+  shuffle: true
+  voting: true
+  models:
+    random_forest:
+      short_name: 'rf'
+      method: 'RandomForestRegressor'
+      save_path: 'models/rf.pkl'
+      params:
+        n_estimators: 100
+        max_depth: 10
+        n_jobs: -1
+        random_state: 0
+    gradient_boosting:
+      short_name: 'gbr'
+      method: 'GradientBoostingRegressor'
+      save_path: 'models/gbr.pkl'
+      params:
+        n_estimators: 167
+        learning_rate: 0.1
+        max_depth: 15
+    # svm:
+    #   short_name: 'svr'
+    #   method: 'SVR'
+    #   save_path: 'models/svr.pkl'
+    #   params:
+    #     kernel: 'rbf'
+    #     C: 1.0
+    #     gamma: 0.1
+    #     epsilon: 0.1
+
